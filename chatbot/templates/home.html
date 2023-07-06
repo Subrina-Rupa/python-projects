@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot system</title>
+  <style>
+    /* Chat container */
+    .chat-container {
+      width: 1500px;
+      height: 500px;
+      border: 1px solid #0f0101;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    
+    /* Chat messages */
+    .message {
+      background-color: #665dbc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    /* User message */
+    .user-message {
+      background-color: #5c94bd;
+    }
+    
+    /* Bot message */
+    .bot-message {
+      background-color: #d4edda;
+    }
+    
+    /* Input field */
+    .input-container {
+      margin-top: 150px;
+    }
+    
+    .input-container input[type="text"] {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #010203;
+      border-radius: 10px;
+    }
+    
+    .input-container input[type="submit"] {
+      padding: 8px 15px;
+      background-color: #17107b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container" id="chatContainer">
+    <h3>Chat messages will be dynamically added here </h3>
+  </div>
+  
+  <div class="input-container">
+    <input type="text" id="userInput" placeholder="Type your queries here..." />
+    <input type="submit" value="Send" onclick="sendMessage()" />
+  </div>
+  
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById("userInput").value;
+      var chatContainer = document.getElementById("chatContainer");
+      
+      // Create user message element
+      var userMessage = document.createElement("div");
+      userMessage.className = "message user-message";
+      userMessage.innerHTML = userInput;
+      
+      // Create bot message element
+      var botMessage = document.createElement("div");
+      botMessage.className = "message bot-message";
+      botMessage.innerHTML = "Bot's response";
+      
+      // Append messages to chat container
+      chatContainer.appendChild(userMessage);
+      chatContainer.appendChild(botMessage);
+      
+      // Clear user input
+      document.getElementById("userInput").value = "";
+      
+      // Scroll to the bottom of the chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
